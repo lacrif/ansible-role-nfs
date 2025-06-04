@@ -1,8 +1,8 @@
 ---
 
 - name: 'Setting package facts'
-  ansible.builtin.set_fact: 
-    nfs_package_name: 
+  ansible.builtin.set_fact:
+    nfs_package_name:
       - 'nfs-utils'
   when: not nfs_package_name
 
