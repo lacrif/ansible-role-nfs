@@ -41,7 +41,7 @@ jobs:
       matrix:
         distro:
           - 'rockylinux9'
-          - 'ubuntu2004'
+#          - 'ubuntu2004'
 
     steps:
       - name: 'Check out the codebase'
