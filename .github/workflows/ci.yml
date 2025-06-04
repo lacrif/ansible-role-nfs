@@ -40,8 +40,8 @@ jobs:
     strategy:
       matrix:
         distro:
+          - 'rockylinux8'
           - 'rockylinux9'
-#          - 'ubuntu2004'
 
     steps:
       - name: 'Check out the codebase'
