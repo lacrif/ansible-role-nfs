@@ -9,7 +9,7 @@ driver:
   name: 'docker'
 platforms:
   - name: 'instance'
-    image: 'lacrif/docker-${MOLECULE_DISTRO:-rockylinux9}-molecule:latest'
+    image: 'geerlingguy/docker-${MOLECULE_DISTRO:-rockylinux9}-ansible:latest'
     command: '${MOLECULE_DOCKER_COMMAND:-""}'
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
