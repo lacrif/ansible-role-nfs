@@ -1,0 +1,18 @@
+---
+
+- name: 'Setting package facts'
+  ansible.builtin.set_fact: 
+    nfs_package_name: 
+      - 'nfs-utils'
+  when: not nfs_package_name
+
+- name: 'Ensure NFS utilities are installed'
+  ansible.builtin.dnf:
+    name: '{{ nfs_package_name }}'
+    state: 'present'
+
+- name: 'Ensure rpcbind is running as configured'
+  ansible.builtin.service:
+    name: 'rpcbind'
+    state: '{{ nfs_rpcbind_state }}'
+    enabled: '{{ nfs_rpcbind_enabled }}'
