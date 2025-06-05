@@ -10,7 +10,7 @@ driver:
 
 platforms:
   - name: 'instance'
-    image: 'lacrif/docker-${MOLECULE_DISTRO:-rockylinux9}-ansible:latest'
+    image: 'lacrif/docker-${MOLECULE_DISTRO_OS:-rockylinux}-ansible:${MOLECULE_DISTRO_VERSION:-0}'
     command: '${MOLECULE_DOCKER_COMMAND:-"/usr/sbin/init"}'
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
