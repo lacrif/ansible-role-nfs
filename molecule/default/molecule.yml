@@ -11,7 +11,7 @@ driver:
 platforms:
   - name: 'instance'
     image: 'lacrif/ansible:${MOLECULE_ANSIBLE_VERSION:-11}-${MOLECULE_DISTRO:-rockylinux9}'
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    command: ${MOLECULE_DOCKER_COMMAND:-"/usr/sbin/init"}
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
       - '/var/lib/containerd'
