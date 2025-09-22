@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: 'lacrif'
+  role_name: 'nfs'
   description: 'NFS installation for Linux'
   company: 'lacrif'
 

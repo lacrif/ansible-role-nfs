@@ -39,12 +39,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: 'rockylinux'
-            version: '9'
-          - os: 'ubuntu'
-            version: '22.04'
-          - os: 'ubuntu'
-            version: '24.04'
+          - distro: 'rockylinux9'
+            docker_command: '/usr/sbin/init'
+          - distro: 'ubuntu24.04'
+            docker_command: ''
+          - distro: 'debianbookworm'
+            docker_command: ''
 
     steps:
       - name: 'Check out the codebase'
@@ -65,5 +65,5 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO_OS: ${{ matrix.os }}
-          MOLECULE_DISTRO_VERSION: ${{ matrix.version }}
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+          MOLECULE_DOCKER_COMMAND: ${{ matrix.docker_command }}

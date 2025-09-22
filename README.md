@@ -1,51 +1,62 @@
-# Ansible Role NFS Server
+
+# Rôle Ansible Serveur NFS
 
 [![GitHub CI](https://github.com/lacrif/ansible-role-nfs/actions/workflows/ci.yml/badge.svg)](https://github.com/lacrif/ansible-role-nfs/actions/workflows/ci.yml)
 [![GitHub forks](https://img.shields.io/github/forks/lacrif/ansible-role-nfs?link=https%3A%2F%2Fgithub.com%2Flacrif%2Fansible-role-nfs)](https://github.com/lacrif/ansible-role-nfs)
 [![GitHub Repo stars](https://img.shields.io/github/stars/lacrif/ansible-role-nfs?link=https%3A%2F%2Fgithub.com%2Flacrif%2Fansible-role-nfs)](https://github.com/lacrif/ansible-role-nfs)
 
-Installs NFS utilities on RedHat/CentOS or Debian/Ubuntu.
+Installation de NFS sur RedHat/CentOS ou Debian/Ubuntu.
 
-## Requirements
+## Prérequis
 
-None.
+Aucun
 
-## Role Variables
+## Variables du rôle
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+Les variables disponibles sont listées ci-dessous, avec leurs valeurs par défaut (voir `defaults/main.yml`) :
 
 ```yaml
 nfs_package_name: []
 ```
 
-A list of packages which will be installed. (Simple example: nfs_package_name: ['nfs-utils >= 0.9']).
-Not set this variable if you want le last version of the packages.
+Liste des paquets qui seront installés. (Exemple simple : nfs_package_name: ['nfs-utils >= 0.9']).
+Ne pas définir cette variable si vous souhaitez la dernière version des paquets.
 
 ```yaml
 nfs_exports: []
 ```
 
-A list of exports which will be placed in the /etc/exports file. See Ubuntu's simple Network File System (NFS) guide for more info and examples. (Simple example: nfs_exports: [ "/home/public    *(rw,sync,no_root_squash)" ]).
+Liste des exports qui seront placés dans le fichier /etc/exports. Voir le guide NFS d'Ubuntu pour plus d'informations et d'exemples. (Exemple simple : nfs_exports: [ "/home/public    *(rw,sync,no_root_squash)" ]).
 
 ```yaml
 nfs_rpcbind_state: 'started'
 nfs_rpcbind_enabled: true
 ```
 
-(RedHat/CentOS/Fedora only) The state of the `rpcbind` service, and whether it should be enabled at system boot.
+(RedHat/CentOS/Fedora uniquement) L'état du service `rpcbind` et s'il doit être activé au démarrage du système.
 
-## Dependencies
+## Dépendances
 
-None.
+Aucune.
 
-## Example Playbook
+## Exemple de Playbook
 
 ```yaml
 - hosts: 'all'
-    roles:
+  roles:
     - role: 'lacrif.nfs'
 ```
 
-## Author Information
+## Molecule
+
+Lancer les tests
+
+```bash
+export MOLECULE_DISTRO=rockylinux9 && MOLECULE_DOCKER_COMMAND=/usr/sbin/init && molecule test
+export MOLECULE_DISTRO=ubuntu24.04 && MOLECULE_DOCKER_COMMAND= molecule test
+export MOLECULE_DISTRO=debianbookworm && MOLECULE_DOCKER_COMMAND= && molecule test
+```
+
+## Informations sur l'auteur
 
 Lacrif
