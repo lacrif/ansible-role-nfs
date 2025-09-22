@@ -10,7 +10,7 @@ driver:
 
 platforms:
   - name: 'instance'
-    image: 'lacrif/ansible:11-${MOLECULE_DISTRO:-rockylinux9}'
+    image: 'lacrif/ansible:${MOLECULE_ANSIBLE_VERSION:-11}-${MOLECULE_DISTRO:-rockylinux9}'
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:rw'
