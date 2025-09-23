@@ -39,15 +39,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - distro: 'rockylinux9'
-            docker_command: '/usr/sbin/init'
-            ansible_version: '11'
-          - distro: 'ubuntu24.04'
-            docker_command: ''
-            ansible_version: '11'
-          - distro: 'debianbookworm'
-            docker_command: ''
-            ansible_version: '11'
+          - distro_name: 'rockylinux'
+            distro_version: '9'
+          - distro_name: 'ubuntu'
+            distro_version: 'noble'
+          - distro_name: 'debian'
+            distro_version: 'bookworm'
 
     steps:
       - name: 'Check out the codebase'
@@ -61,13 +58,12 @@ jobs:
           python-version: '3.x'
 
       - name: 'Install test dependencies'
-        run: 'pip3 install ansible~=${{ matrix.ansible_version }}.0 molecule molecule-plugins[docker] docker'
+        run: 'pip3 install ansible~=11.0 molecule molecule-plugins[docker] docker'
 
       - name: 'Run Molecule tests'
         run: 'molecule test'
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_ANSIBLE_VERSION: ${{ matrix.ansible_version }}
-          MOLECULE_DISTRO: ${{ matrix.distro }}
-          MOLECULE_DOCKER_COMMAND: ${{ matrix.docker_command }}
+          MOLECULE_DISTRO_NAME: ${{ matrix.distro_name }}
+          MOLECULE_DISTRO_VERSION: ${{ matrix.distro_version }}

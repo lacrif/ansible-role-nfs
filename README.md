@@ -52,9 +52,9 @@ Aucune.
 Lancer les tests
 
 ```bash
-export MOLECULE_DISTRO=rockylinux9 && MOLECULE_DOCKER_COMMAND=/usr/sbin/init && molecule test
-export MOLECULE_DISTRO=ubuntu24.04 && MOLECULE_DOCKER_COMMAND= molecule test
-export MOLECULE_DISTRO=debianbookworm && MOLECULE_DOCKER_COMMAND= && molecule test
+export MOLECULE_DISTRO_NAME=rockylinux && export MOLECULE_DISTRO_VERSION=9 && molecule test
+export MOLECULE_DISTRO_NAME=ubuntu && export MOLECULE_DISTRO_VERSION=noble && molecule test
+export MOLECULE_DISTRO_NAME=debian && export MOLECULE_DISTRO_VERSION=bookworm && molecule test
 ```
 
 ## Informations sur l'auteur
